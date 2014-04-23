@@ -18,13 +18,18 @@ Thread::~Thread()
 
 void* Thread::thread_func(void *arg)
 {
-	Thread *p_thread = static_cast<Thread*>(arg);
-	p_thread->run();
+	Thread *p_thread = static_cast<Thread*>(arg); //通过参数
+												  //接收this指针
+	p_thread->run();  //这里用了动态绑定
 	return NULL;
 }
 
 void Thread::start()
 {
+	/*
+	 *  采用静态函数的指针作为回调函数
+	 *  this作为线程的参数
+	 */
 	pthread_create(&_tid, NULL, thread_func, this);
 }
 

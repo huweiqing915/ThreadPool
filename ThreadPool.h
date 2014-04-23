@@ -35,12 +35,12 @@ public:
 	std::queue<Task>::size_type get_task_queue_size();
 
 private:
-	std::queue<Task> _task_queue;
-	std::vector<WorkThread>::size_type _max_thread;
-	std::vector<WorkThread> _thread_vector;
-	bool _is_started;
-	MutexLock _lock;
-	Condition _cond;
+	std::queue<Task> _task_queue; //任务队列
+	std::vector<WorkThread>::size_type _max_thread; //线程的数目
+	std::vector<WorkThread> _thread_vector; //用来存储线程
+	bool _is_started; //标示线程池是否开启
+	MutexLock _lock; //用来保持对队列的互斥操作
+	Condition _cond; //实现对队列任务的同步操作
 };
 
 #endif

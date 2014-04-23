@@ -10,6 +10,9 @@
 
 #include <pthread.h>
 
+/*
+ * 这个线程类是个抽象类，希望派生类去改写它
+ */
 class Thread {
 public:
 	Thread();
@@ -17,7 +20,8 @@ public:
 
 	void start();
 	void join();
-	virtual void run() = 0;
+
+	virtual void run() = 0; //这是个虚函数
 
 	pthread_t get_tid() const;
 private:
