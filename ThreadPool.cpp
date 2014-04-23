@@ -109,7 +109,7 @@ bool ThreadPool::add_task_queue(Task task)
 	return ret;
 }
 
-bool ThreadPool::is_task_queue_empty() 
+bool ThreadPool::is_task_queue_empty() const
 {
 	_lock.lock();
 	bool ret = _task_queue.empty();
@@ -117,7 +117,7 @@ bool ThreadPool::is_task_queue_empty()
 	return ret;
 }
 
-queue<Task>::size_type ThreadPool::get_task_queue_size()
+queue<Task>::size_type ThreadPool::get_task_queue_size() const
 {
 	_lock.lock();
 	queue<Task>::size_type ret = _task_queue.size();
